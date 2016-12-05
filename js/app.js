@@ -86,7 +86,7 @@ Player.prototype.handleInput = function (key) {
     }
     if (this.y <= -10) {
         this.y = -10;
-        won();
+        player.won();
     }
 };
 
@@ -95,18 +95,17 @@ Player.prototype.update = function () {
     this.y = this.y;
 };
 
+// Alert a win and reset the player
+Player.prototype.won = function () {
+    window.alert("You've Won!\nPress ok to play again!");
+    player.reset();
+};
+
 // Reset player to starting (x,y)
 Player.prototype.reset = function () {
     this.x = (blockWidth * 2);
     this.y = (blockHeight * 5);
 };
-
-// Alert a win and reset the player
-function won() {
-    window.alert("You've Won!\nPress ok to play again!");
-    player.reset();
-}
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
