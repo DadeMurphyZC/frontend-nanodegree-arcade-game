@@ -1,6 +1,3 @@
-frontend-nanodegree-arcade-game
-===============================
-
 #Udacity Frontend Nanodegree Arcade Game
 
 ##To run the game
