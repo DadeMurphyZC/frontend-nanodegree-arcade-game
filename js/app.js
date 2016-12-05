@@ -1,5 +1,5 @@
 var blockWidth = 101;
-var blockHeight = 75;
+var blockHeight = 83;
 var pStartX = 2 * blockWidth;
 var pStartY = 5 * blockHeight;
 var min = 125;
@@ -28,7 +28,7 @@ Enemy.prototype.update = function (dt) {
     if (this.x > 505) {
         this.reset();
     };
-    if (this.x > player.x + 0 && this.x < player.x + 60 && this.y > player.y + 0 && this.y < player.y + 60) {
+    if (this.x > player.x + 0 && this.x < player.x + 50 && this.y > player.y + 0 && this.y < player.y + 50) {
         player.reset();
     }
 };
@@ -60,18 +60,18 @@ Player.prototype.render = function () {
 // Set keyboard controls
 Player.prototype.handleInput = function (key) {
     switch (key) {
-    case 'left':
-        this.x = this.x - 40;
-        break;
-    case 'right':
-        this.x = this.x + 40;
-        break;
-    case 'up':
-        this.y = this.y - 40;
-        break;
-    case 'down':
-        this.y = this.y + 40;
-        break;
+        case 'left':
+            this.x = this.x - (blockWidth);
+            break;
+        case 'right':
+            this.x = this.x + (blockWidth);
+            break;
+        case 'up':
+            this.y = this.y - (blockHeight);
+            break;
+        case 'down':
+            this.y = this.y + (blockHeight);
+            break;
     }
 
     // condition statements to keep player on the board and win condition
@@ -86,7 +86,7 @@ Player.prototype.handleInput = function (key) {
     }
     if (this.y <= -10) {
         this.y = -10;
-        player.won();
+        this.won();
     }
 };
 
@@ -98,23 +98,23 @@ Player.prototype.update = function () {
 // Alert a win and reset the player
 Player.prototype.won = function () {
     window.alert("You've Won!\nPress ok to play again!");
-    player.reset();
+    this.reset();
 };
 
 // Reset player to starting (x,y)
 Player.prototype.reset = function () {
     this.x = (blockWidth * 2);
-    this.y = (blockHeight * 5);
+    this.y = (blockHeight * 4.5);
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy1 = new Enemy(0, (blockHeight - 15));
-var enemy2 = new Enemy(0, (blockHeight * 1.9));
-var enemy3 = new Enemy(0, (blockHeight * 3));
+var enemy1 = new Enemy(0, (blockHeight - 25));
+var enemy2 = new Enemy(0, (blockHeight + 60));
+var enemy3 = new Enemy(0, (blockHeight + 145));
 var allEnemies = [enemy1, enemy2, enemy3];
-var player = new Player((blockWidth * 2), (blockHeight * 5));
+var player = new Player((blockWidth * 2), (blockHeight * 4.5));
 
 
 
